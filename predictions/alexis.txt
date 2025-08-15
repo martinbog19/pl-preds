@@ -1,20 +1,20 @@
 Arsenal
-Aston Villa
-Bournemouth
-Brentford
-Brighton
-Burnley
-Chelsea
-Crystal Palace
-Everton
-Fulham
-Leeds United
 Liverpool
 Manchester City
-Manchester Utd
-Newcastle Utd
-Nott'ham Forest
-Sunderland
+Chelsea
 Tottenham
+Newcastle Utd
+Manchester Utd
+Aston Villa
+Brighton
+Fulham
+Nott'ham Forest
+Crystal Palace
+Everton
+Bournemouth
 West Ham
+Brentford
+Sunderland
+Leeds United
 Wolves
+Burnley

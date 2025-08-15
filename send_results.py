@@ -1,8 +1,8 @@
 import pandas as pd
 
-from ref import NAMES, EMAILS, PHONES
-
+from helpers.ref import NAMES, EMAILS, PHONES
 from helpers.comms import send_email, send_whatsapp
+
 
 
 results = pd.read_csv('results.csv')

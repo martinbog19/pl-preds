@@ -15,9 +15,8 @@ def scrape_standings() -> pd.DataFrame:
     soup = BeautifulSoup(page.content, 'lxml')
     table = soup.find('table')
 
-
     standings = pd.read_html(str(table))[0]
-    standings = standings[['Rk', 'Squad']].rename(columns = {'Squad': 'actual'})
+    standings = standings[['Rk', 'Squad']].rename(columns = {'Squad': 'Team'})
     standings['Date'] = date.today()
 
     return standings

@@ -1,26 +1,30 @@
 import numpy as np
-from datetime import date
+import pandas as pd
 
-from ref import NAMES
+from helpers.ref import NAMES
 from helpers.scrape import scrape_standings
+from helpers.eval import eval_preds
 
-
-
-today = date.today()
-RESULTS_PATH = 'results.csv'
 
 
 standings = scrape_standings()
+standings.to_csv('standings.csv', index=False, header=False, mode='a')
 
 
+res_list = []
 for name in NAMES:
 
-    with open(f'predictions/{name.lower()}.txt', 'r') as f:
-        preds = [line.strip() for line in f.readlines()]
+    with open(f'predictions/{name}.txt', 'r') as f:
+        preds = f.read().splitlines()
 
-    standings[f'pred_{name.lower()}'] = preds
+    res_list.append(eval_preds(standings, preds))
 
-    standings[f'diff_{name.lower()}'] = [np.abs(np.where(standings[f'pred_{name.lower()}'] == tm)[0][0] - idx) for tm, idx in zip(standings.actual, standings.index)]
-    standings[f'perf_{name.lower()}'] = (standings[f'diff_{name.lower()}'] == 0).astype(int)
+metrics = pd.concat(res_list)
+metrics.insert(0, 'name', NAMES)
 
-standings.to_csv(RESULTS_PATH, index=False, header=False, mode='a')
+metrics['rank'] = metrics.sort_values(
+    ["total_diff", "total_perf", "worst_by", "name"],
+    ascending=[True, False, True, True]
+).reset_index(drop=True).index + 1
+
+metrics.to_csv('results.csv', index=False, header=False, mode='a')
