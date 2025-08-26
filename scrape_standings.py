@@ -1,14 +1,15 @@
 from datetime import datetime
 import pandas as pd
+import json
 
 from helpers.ref import NAMES
 from helpers.scrape import scrape_standings
 from helpers.eval import eval_preds
 
-
+with open('helpers/abbr.json') as f:
+    abbr_map = json.load(f)
 
 today = datetime.now().date()
-
 
 standings = scrape_standings()
 standings.to_csv('standings.csv', index=False, header=False, mode='a')
