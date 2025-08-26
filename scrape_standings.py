@@ -18,7 +18,7 @@ standings.to_csv('standings.csv', index=False, header=False, mode='a')
 res_list = []
 for name in NAMES:
 
-    with open(f'predictions/{name}.txt', 'r') as f:
+    with open(f'predictions/{name.lower()}.txt', 'r') as f:
         preds = f.read().splitlines()
 
     res_list.append(eval_preds(standings, preds))
