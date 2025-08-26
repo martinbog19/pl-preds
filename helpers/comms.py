@@ -15,7 +15,7 @@ def format_rankings_msg(metrics: pd.DataFrame) -> str:
     }
 
     return '\n'.join([
-        f"{arrows.get(x['trend'])} {x['rank']}. {x['name']} ({str(x['total_diff']).zfill(3)} diff.)"
+        f"{arrows.get(x['trend'])} {x['rank']}. {x['name']} ({x['total_diff']} diff.)"
         for _, x in metrics.sort_values('rank').iterrows()
     ])
 
@@ -31,14 +31,14 @@ def format_whatsapp_msg(x: pd.Series) -> str:
     perf_msg = ' (' + ', '.join([
         f'{tm} {int_to_rank(pos)}'
         for tm, pos
-        in zip(x['perfect_tms'].split('_'), x['perfect_pos'].split('_'))
+        in zip(str(x['perfect_tms']).split('_'), str(x['perfect_pos']).split('_'))
     ]) + ')' if x['total_perf'] > 0 else ''
 
     worst_msg = ', '.join(    
         [
             f'{tm} ({diff})'
             for tm, diff
-            in zip(x['worst_tms'].split('_'), x['worst_bys'].split('_'))
+            in zip(str(x['worst_tms']).split('_'), str(x['worst_bys']).split('_'))
         ]
     )
 
@@ -47,7 +47,7 @@ def format_whatsapp_msg(x: pd.Series) -> str:
 
     Total difference:    {x['total_diff']}
     Perfect predictions: {x['total_perf']}{perf_msg}
-    Worst prediction{'s:' * (len(x['worst_bys'].split('_')) > 1) + ': ' * (len(x['worst_bys'].split('_')) <= 1)}   {worst_msg}
+    Worst prediction{'s:' * (len(str(x['worst_bys']).split('_')) > 1) + ': ' * (len(str(x['worst_bys']).split('_')) <= 1)}   {worst_msg}
     """
 
 
@@ -107,43 +107,3 @@ def send_email(
     # finally:
     #     server.quit()
 
-
-def send_whatsapp(
-    metrics: pd.DataFrame,
-    PHONES: list[str],
-) -> None:
-    
-    ACCOUNT_SID = os.getenv('TWILIO_ACCOUNT_SID')
-    AUTH_TOKEN = os.getenv('TWILIO_AUTH_TOKEN')
-    
-
-    today = datetime.now().date()
-    last_week = today - timedelta(days=7)
-
-    metrics_last_week = metrics[metrics['last_week'] == last_week][['name', 'rank']]
-    metrics = metrics[metrics['date'] == today]
-
-    metrics = metrics.merge(
-        metrics_last_week,
-        on='name',
-        suffixes=('', '_past')
-    )
-
-    ranking_msg = format_rankings_msg(metrics)
-
-
-    for _, x in metrics.itterows():
-
-        name = x['name']
-        phone_to = PHONES.get(name, '')
-
-        whatsapp_msg = format_whatsapp_msg(x)
-
-        msg = whatsapp_msg + '\n' + ranking_msg
-
-        client = Client(ACCOUNT_SID, AUTH_TOKEN)
-        message = client.messages.create(
-            body=msg,
-            from_="whatsapp:+14155238886",
-            to=f"whatsapp:{phone_to}",
-        )

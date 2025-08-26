@@ -1,10 +1,13 @@
-import numpy as np
+from datetime import datetime
 import pandas as pd
 
 from helpers.ref import NAMES
 from helpers.scrape import scrape_standings
 from helpers.eval import eval_preds
 
+
+
+today = datetime.now().date()
 
 
 standings = scrape_standings()
@@ -27,4 +30,6 @@ metrics['rank'] = metrics.sort_values(
     ascending=[True, False, True, True]
 ).reset_index(drop=True).index + 1
 
-metrics.to_csv('results.csv', index=False, header=False, mode='a')
+metrics.insert(0, 'date', today)
+
+metrics.to_csv('metrics.csv', index=False, header=False, mode='a')

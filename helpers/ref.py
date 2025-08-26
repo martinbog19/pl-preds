@@ -11,7 +11,7 @@ EMAILS = [
 ]
 
 PHONES = {
-    'Alexis': '',
+    'Alexis': '+41792925629',
     'Martin': '+18574520957',
-    'Thomas': '',
+    'Thomas': '+15142478125',
 }

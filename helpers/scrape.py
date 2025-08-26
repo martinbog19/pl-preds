@@ -11,7 +11,11 @@ from datetime import date
 def scrape_standings() -> pd.DataFrame:
 
     url = 'https://fbref.com/en/comps/9/Premier-League-Stats'
-    page = requests.get(url)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+    }
+
+    page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.content, 'lxml')
     table = soup.find('table')
 

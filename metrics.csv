@@ -1,1 +1,4 @@
-name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect_pos,rank
+date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect_pos,rank
+2025-08-22,Alexis,80,2,Sunderland,15,-15,Brighton_Crystal Palace,9_12,1
+2025-08-22,Martin,86,2,Sunderland,17,-17,Manchester City_Brighton,1_9,2
+2025-08-22,Thomas,92,3,Sunderland,17,-17,Manchester City_Liverpool_Everton,1_4_14,3
