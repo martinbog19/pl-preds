@@ -15,7 +15,8 @@ def scrape_standings() -> pd.DataFrame:
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
     }
 
-    page = requests.get(url, headers=headers)
+    # page = requests.get(url, headers=headers)
+    page = requests.get(url)
     soup = BeautifulSoup(page.content, 'lxml')
     table = soup.find('table')
 
