@@ -11,7 +11,7 @@ with open('helpers/abbr.json') as f:
 
 today = datetime.now().date()
 
-standings = scrape_standings()
+standings = scrape_standings(abbr_map)
 standings.to_csv('standings.csv', index=False, header=False, mode='a')
 
 
