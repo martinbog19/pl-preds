@@ -12,11 +12,13 @@ def scrape_standings() -> pd.DataFrame:
 
     url = 'https://fbref.com/en/comps/9/Premier-League-Stats'
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36'
     }
 
-    # page = requests.get(url, headers=headers)
-    page = requests.get(url)
+    page = requests.get(url, headers=headers)
+
+    print(page.status_code, page.text)
+
     soup = BeautifulSoup(page.content, 'lxml')
     table = soup.find('table')
 
