@@ -24,5 +24,6 @@ jobs:
 
             - name: Run send_results.py
               env:
+                GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
                 GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
               run: python send_results.py

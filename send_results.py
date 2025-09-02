@@ -15,7 +15,7 @@ from helpers.ref import EMAILS
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-USERNAME = 'martinbog19@gmail.com'
+USERNAME = os.getenv('GMAIL_USERNAME')
 PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
 
 
