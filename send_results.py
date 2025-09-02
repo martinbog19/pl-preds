@@ -22,7 +22,7 @@ PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
 today = datetime.now().date()
 last_week = today - timedelta(days=7)
 
-metrics = pd.read_csv('metrics.csv')
+metrics = pd.read_csv('data/metrics.csv')
 
 metrics_last_week = metrics[metrics['date'].astype(str) == datetime.strftime(last_week, '%Y-%m-%d')][['name', 'rank']]
 metrics = metrics[metrics['date'].astype(str) == datetime.strftime(today, '%Y-%m-%d')]
