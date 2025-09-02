@@ -27,9 +27,6 @@ for name in NAMES:
 
 metrics = pd.concat(res_list)
 metrics.insert(0, 'name', NAMES)
-
-metrics = pd.concat(res_list)
-metrics.insert(0, 'name', NAMES)
 metrics = metrics.sort_values(
     ["total_diff", "total_perf", "worst_by", "name"],
     ascending=[True, False, True, True],
