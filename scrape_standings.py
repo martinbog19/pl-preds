@@ -26,10 +26,13 @@ for name in NAMES:
 metrics = pd.concat(res_list)
 metrics.insert(0, 'name', NAMES)
 
-metrics['rank'] = metrics.sort_values(
+metrics = pd.concat(res_list)
+metrics.insert(0, 'name', NAMES)
+metrics = metrics.sort_values(
     ["total_diff", "total_perf", "worst_by", "name"],
-    ascending=[True, False, True, True]
-).reset_index(drop=True).index + 1
+    ascending=[True, False, True, True],
+).reset_index(drop=True)
+metrics['rank'] = metrics.index + 1
 
 metrics.insert(0, 'date', today)
 

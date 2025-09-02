@@ -4,11 +4,11 @@ NAMES = [
     'Thomas',
 ]
 
-EMAILS = [
-    'alexis.bogaert2309@gmail.com',
-    'martinbog19@gmail.com',
-    'tbogaert19@gmail.com',
-]
+EMAILS = {
+    'Alexis': 'alexis.bogaert2309@gmail.com',
+    'Martin': 'martinbog19@gmail.com',
+    'Thomas': 'tbogaert19@gmail.com',
+}
 
 PHONES = {
     'Alexis': '+41792925629',

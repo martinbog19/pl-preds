@@ -2,7 +2,8 @@ name: Send Results by Email & WhatsApp
 
 on:
     schedule:
-        - cron: '0 16 * * 1'
+      - cron: '0 16 * * 1'
+    workflow_dispatch:
 
 jobs:
     send-results:
@@ -22,4 +23,6 @@ jobs:
                 pip install -r requirements.txt
 
             - name: Run send_results.py
+              env:
+                GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
               run: python send_results.py

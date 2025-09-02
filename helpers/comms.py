@@ -14,8 +14,8 @@ def format_rankings_msg(metrics: pd.DataFrame) -> str:
         -1: '🔻',
     }
 
-    return '\n'.join([
-        f"{arrows.get(x['trend'])} {x['rank']}. {x['name']} ({x['total_diff']} diff.)"
+    return '\t' + '\n\t'.join([
+        f"{arrows.get(x['trend'], '➖')} {x['rank']}. {x['name']} ({x['total_diff']} diff.)"
         for _, x in metrics.sort_values('rank').iterrows()
     ])
 
@@ -43,11 +43,11 @@ def format_whatsapp_msg(x: pd.Series) -> str:
     )
 
     return f"""
-    {medals.get(x['rank'], '')} {x['name']}, you're currently ranked {int_to_rank(x['rank'])}
+{medals.get(x['rank'], '')} {x['name']}, you're currently ranked {int_to_rank(x['rank'])}
 
-    Total difference:    {x['total_diff']}
-    Perfect predictions: {x['total_perf']}{perf_msg}
-    Worst prediction{'s:' * (len(str(x['worst_bys']).split('_')) > 1) + ': ' * (len(str(x['worst_bys']).split('_')) <= 1)}   {worst_msg}
+Total difference: {x['total_diff']} positions
+Perfect predictions: {x['total_perf']}{perf_msg}
+Worst prediction{'s:' * (len(str(x['worst_bys']).split('_')) > 1) + ': ' * (len(str(x['worst_bys']).split('_')) <= 1)} {worst_msg}
     """
 
 
