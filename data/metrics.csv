@@ -62,3 +62,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-09-14,Alexis,88,2,Manchester City,13,13,Arsenal_Fulham,1_10,1
 2025-09-14,Martin,90,0,Manchester City,15,15,,,2
 2025-09-14,Thomas,100,1,Manchester City,15,15,Crystal Palace,8,3
+2025-09-15,Martin,82,0,Sunderland_Aston Villa,12,-12_12,,,1
+2025-09-15,Alexis,84,0,Aston Villa,11,11,,,2
+2025-09-15,Thomas,96,0,Sunderland_Aston Villa,12,-12_12,,,3
