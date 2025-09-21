@@ -80,3 +80,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-09-20,Martin,82,0,Sunderland_Aston Villa,12,-12_12,,,1
 2025-09-20,Alexis,84,0,Aston Villa,11,11,,,2
 2025-09-20,Thomas,96,0,Sunderland_Aston Villa,12,-12_12,,,3
+2025-09-21,Alexis,96,0,Aston Villa,11,11,,,1
+2025-09-21,Martin,98,1,Aston Villa,12,12,Arsenal,3,2
+2025-09-21,Thomas,106,1,Aston Villa,12,12,Arsenal,3,3
