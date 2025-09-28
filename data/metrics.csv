@@ -101,3 +101,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-09-27,Alexis,90,0,Bournemouth_Sunderland_Aston Villa,10,-10_-10_10,,,1
 2025-09-27,Martin,94,0,Sunderland,12,-12,,,2
 2025-09-27,Thomas,102,0,Sunderland,12,-12,,,3
+2025-09-28,Alexis,100,0,Sunderland,13,-13,,,1
+2025-09-28,Martin,100,0,Sunderland,15,-15,,,2
+2025-09-28,Thomas,110,1,Sunderland,15,-15,Brighton,10,3
