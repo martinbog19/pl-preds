@@ -113,3 +113,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-10-01,Martin,90,0,Sunderland,14,-14,,,1
 2025-10-01,Alexis,92,0,Sunderland,12,-12,,,2
 2025-10-01,Thomas,102,1,Sunderland,14,-14,Brighton,10,3
+2025-10-02,Martin,90,0,Sunderland,14,-14,,,1
+2025-10-02,Alexis,92,0,Sunderland,12,-12,,,2
+2025-10-02,Thomas,102,1,Sunderland,14,-14,Brighton,10,3
