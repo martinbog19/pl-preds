@@ -122,3 +122,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-10-04,Martin,90,2,Bournemouth_Sunderland,13,-13_-13,Arsenal_Tottenham,3_5,1
 2025-10-04,Alexis,94,1,Bournemouth,12,-12,Tottenham,5,2
 2025-10-04,Thomas,102,2,Sunderland,13,-13,Arsenal_Brighton,3_10,3
+2025-10-05,Martin,80,2,Sunderland,12,-12,Liverpool_Brentford,2_14,1
+2025-10-05,Alexis,82,2,Bournemouth_Sunderland,10,-10_-10,Arsenal_Liverpool,1_2,2
+2025-10-05,Thomas,92,1,Sunderland,12,-12,Fulham,12,3
