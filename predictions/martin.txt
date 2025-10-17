@@ -1,20 +1,20 @@
-Manchester City
-Liverpool
-Arsenal
-Chelsea
-Tottenham
-Newcastle Utd
-Aston Villa
-Manchester Utd
-Brighton
-Crystal Palace
-Everton
-Nott'ham Forest
-Fulham
-Brentford
-Bournemouth
-West Ham
-Leeds United
-Wolves
-Sunderland
-Burnley
+MNC
+LIV
+ARS
+CHE
+TOT
+NEW
+AVL
+MAN
+BHA
+CRY
+EVE
+NFO
+FUL
+BRE
+BOU
+WHU
+LEE
+WOL
+SUN
+BUR

@@ -1,16 +1,26 @@
 import pandas as pd
 import numpy as np
+from scipy.stats import spearmanr
 
 
 
 def eval_preds(
-        standings: pd.DataFrame,
-        preds: list[str],
+    standings: pd.DataFrame,
+    preds: list[str],
 ) -> pd.DataFrame:
     
-    standings = standings.sort_values('Rk').copy()
-
+    standings = standings.sort_values('Rk').reset_index(drop=True).copy()
     standings['pred'] = preds
+
+    teams = standings["Team"].tolist()
+    actuals = {tm: rk for tm, rk in zip(standings["Team"], standings["Rk"])}
+    predicted = {tm: rk for tm, rk in zip(standings["pred"], standings["Rk"])}
+
+    actual_ranks = [actuals[tm] for tm in teams]
+    predicted_ranks = [predicted[tm] for tm in teams]
+
+    rho = spearmanr(actual_ranks, predicted_ranks)
+
     standings['diff'] = [idx - np.where(standings['pred'] == tm)[0][0] for tm, idx in zip(standings['Team'], standings.index)]
     standings['asb_diff'] = standings['diff'].abs()
     standings['perf'] = (standings['diff'] == 0).astype(int)
@@ -33,6 +43,7 @@ def eval_preds(
 
     return pd.DataFrame(
         {
+            "spearmanr": [rho.statistic],
             'total_diff': [total_diff],
             'total_perf': [total_perf],
             'worst_tms': [worst_tms],
