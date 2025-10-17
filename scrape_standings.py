@@ -1,9 +1,9 @@
 from datetime import datetime
 import pandas as pd
 
-from helpers.ref import NAMES
-from helpers.scrape import get_scraper
-from helpers.eval import eval_preds
+from src.ref import NAMES
+from src.scrape import get_scraper
+from src.eval import eval_preds
 
 
 today = datetime.now().date()
@@ -13,6 +13,13 @@ league = "prem"
 scraper = get_scraper(league)
 standings = scraper.scrape_standings()
 standings.to_csv("data/standings.csv", index=False, header=False, mode="a")
+
+
+evaluator = get_evaluator(league)
+
+metrics = evaluator.compute_metrics(
+    NAMES
+)
 
 
 for conf, conf_standings in standings.groupby("Conference"):

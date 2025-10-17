@@ -8,8 +8,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from helpers.comms import format_rankings_msg, format_whatsapp_msg
-from helpers.ref import EMAILS
+from src.comms import format_rankings_msg, format_whatsapp_msg
+from src.ref import EMAILS
 
 
 league = "prem"
