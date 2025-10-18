@@ -1,17 +1,21 @@
-NAMES = [
-    'Alexis',
-    'Martin',
-    'Thomas',
-]
-
 EMAILS = {
-    'Alexis': 'alexis.bogaert2309@gmail.com',
-    'Martin': 'martinbog19@gmail.com',
-    'Thomas': 'tbogaert19@gmail.com',
+    "Alexis": "alexis.bogaert2309@gmail.com",
+    "Martin": "martinbog19@gmail.com",
+    "Thomas": "tbogaert19@gmail.com",
+    "Lucas": "",
+    "Krish": "",
 }
 
-PHONES = {
-    'Alexis': '+41792925629',
-    'Martin': '+18574520957',
-    'Thomas': '+15142478125',
+PLAYERS = {
+    "nba": [
+        "Krish",
+        "Lucas",
+        "Martin",
+        "Thomas",
+    ],
+    "prem": [
+        "Alexis",
+        "Martin",
+        "Thomas",
+    ]
 }

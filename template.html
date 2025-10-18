@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Predictions Email</title>
+  <style>
+    body {
+      font-family: 'Radikal', Arial, sans-serif;
+      background-color: #C8102E;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      overflow: hidden;
+      border: solid 2px;
+      border-color: #1D428A;
+    }
+    .header {
+      background-color: #1D428A;
+      color: #ffffff;
+      padding: 30px 30px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      letter-spacing: 0.5px;
+    }
+    .content {
+      padding: 30px;
+    }
+    .ranking {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1D428A;
+      margin-bottom: 40px;
+    }
+    .summary {
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    .summary strong {
+      color: #1D428A;
+    }
+    .rankings-list {
+      background-color: #f9fafc;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+    .rankings-list li {
+      list-style: none;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .rankings-list li:last-child {
+      border-bottom: none;
+    }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    table.dataframe {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+    table.dataframe th, table.dataframe td {
+      padding: 10px;
+      text-align: center;
+    }
+    table.dataframe thead th {
+      border-bottom: 2px solid #000000;
+    }
+    table.dataframe tr:first-child th {
+      border-top: 0px solid #000000;
+    }
+    table.dataframe tr:last-child td {
+      border-bottom: 2px solid #000000;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1><img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png?w=100&h=100&transparent=true" width="40">  NBA Predictions Weekly Update</h1>
+      <p>{{report_date}}</p>
+    </div>
+    <div class="content">
+      <div class="ranking">{{medal}}{{name}}, you're currently ranked <strong><u>{{position}}</u></strong></div>
+
+      <div class="summary">
+        <p><strong>Total difference:</strong> {{abs_diff}} positions</p>
+        <p><strong>Perfect predictions:</strong> {{perf_msg}}</p>
+        <p><strong>Worst prediction:</strong> {{worst_msg}}</p>
+      </div>
+
+      <div class="section">
+        <h2>Rankings</h2>
+        <div>
+          {{rankings_table}}
+        </div>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
