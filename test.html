@@ -93,21 +93,54 @@
   <div class="email-container">
     <div class="header">
       <h1><img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png?w=100&h=100&transparent=true" width="40">  NBA Predictions Weekly Update</h1>
-      <p>{{report_date}}</p>
+      <p></p>
     </div>
     <div class="content">
-      <div class="ranking">{{medal}}{{name}}, you're currently ranked <strong><u>{{position}}</u></strong></div>
+      <div class="ranking">🥇 Martin, you're currently ranked <strong><u>1st</u></strong></div>
 
       <div class="summary">
-        <p><strong>Total difference:</strong> {{abs_diff}} positions</p>
-        <p><strong>Perfect predictions:</strong> {{perf_msg}}</p>
-        <p><strong>Worst prediction:</strong> {{worst_msg}}</p>
+        <p><strong>Total difference:</strong> 9 positions</p>
+        <p><strong>Perfect predictions:</strong> New York Knicks 1st</p>
+        <p><strong>Worst prediction:</strong> Minnesota Timberwolves (-6)</p>
       </div>
 
       <div class="section">
         <h2>Rankings</h2>
         <div>
-          {{rankings_table}}
+          <table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Perfect</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>📈</td>
+      <td>1st</td>
+      <td>Martin</td>
+      <td>96.1%</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>📉</td>
+      <td>2nd</td>
+      <td>Lucas</td>
+      <td>34.2%</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>3rd</td>
+      <td>Krish</td>
+      <td>31.2%</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
         </div>
     </div>
     </div>
