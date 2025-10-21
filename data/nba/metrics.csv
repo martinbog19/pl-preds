@@ -1,1 +1,7 @@
-date,name,spearmanr,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect_pos,conference
+date,name,spearmanr,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect_pos,conference,rank
+2025-10-21,Martin,0.4071428571428571,54,3,BOS,9,-9,NYK_ATL_CHI,1_5_12,East,1
+2025-10-21,Lucas,0.175,66,2,BOS_WAS,10,-10_10,NYK_MIA,1_4,East,2
+2025-10-21,Martin,0.28571428571428564,58,1,UTA,13,-13,SAS,9,West,1
+2025-10-21,Lucas,0.2178571428571428,60,3,MIN,12,-12,SAS_SAC_PHO,9_11_15,West,2
+2025-10-21,Lucas,0.1964285714285714,126,5,MIN,12,-12,NYK_MIA_SAS_SAC_PHO,1_4_9_11_15,Overall,2
+2025-10-21,Martin,0.34642857142857136,112,4,UTA,13,-13,NYK_ATL_CHI_SAS,1_5_12_9,Overall,1

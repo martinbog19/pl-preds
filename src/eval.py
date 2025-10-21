@@ -146,6 +146,8 @@ class NBAEvaluator:
             metrics["conference"] = "Overall"
             metrics = pd.concat([all_metrics, metrics], ignore_index=True)
 
+            metrics["rank"] = metrics.sort_values(["spearmanr", "total_perf", "total_diff", "worst_by"], ascending=[False, False, True, True]).groupby("conference").cumcount() + 1
+
         return metrics
     
 
