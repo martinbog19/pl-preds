@@ -170,3 +170,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-10-20,Alexis,66,2,Bournemouth,11,-11,Arsenal_Brentford,1_16,1
 2025-10-20,Martin,66,0,Bournemouth_Sunderland,12,-12_-12,,,2
 2025-10-20,Thomas,68,4,Sunderland,12,-12,Liverpool_Crystal Palace_Brighton_Brentford,4_8_10_16,3
+2025-10-21,Thomas,72,3,SUN,12,-12,LIV_CRY_BHA,4_8_10,1
+2025-10-21,Martin,66,0,BOU_SUN,12,-12_-12,,,2
+2025-10-21,Alexis,70,1,BOU,11,-11,ARS,1,3
