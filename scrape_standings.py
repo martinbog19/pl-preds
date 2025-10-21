@@ -1,49 +1,30 @@
 from datetime import datetime
 import pandas as pd
+import os
 
-from src.ref import NAMES
+from src.ref import PLAYERS
 from src.scrape import get_scraper
-from src.eval import eval_preds
+from src.eval import get_evaluator
+
+
+league = os.getenv("LEAGUE")
 
 
 today = datetime.now().date()
 
-league = "prem"
+names = PLAYERS[league]
 
 scraper = get_scraper(league)
 standings = scraper.scrape_standings()
-standings.to_csv("data/standings.csv", index=False, header=False, mode="a")
+standings.to_csv(f"data/{league}/standings.csv", index=False, header=False, mode="a")
 
 
 evaluator = get_evaluator(league)
 
-metrics = evaluator.compute_metrics(
-    NAMES
-)
+metrics = evaluator.evaluate(names)
+metrics.insert(0, "date", today)
 
+if league == "prem":
+    metrics.drop(columns="spearmanr", inplace=True)
 
-for conf, conf_standings in standings.groupby("Conference"):
-
-    res_list = []
-    for name in NAMES:
-
-        with open(f"predictions/{league}/{conf}/{name.lower()}.txt", "r") as f:
-            preds = f.read().splitlines()
-
-        res_list.append(
-            eval_preds(conf_standings, preds)
-        )
-
-    metrics = pd.concat(res_list)
-    metrics.insert(0, "name", NAMES)
-
-    metrics = metrics.sort_values(
-        ["total_diff", "total_perf", "worst_by", "name"],
-        ascending=[True, False, True, True],
-    ).reset_index(drop=True)
-    metrics["rank"] = metrics.index + 1
-
-    metrics.insert(0, "Conference", conf)
-    metrics.insert(0, "date", today)
-
-    metrics.to_csv(f"data/{league}/metrics.csv", index=False, header=False, mode="a")
+metrics.to_csv(f"data/{league}/metrics.csv", index=False, header=False, mode="a")

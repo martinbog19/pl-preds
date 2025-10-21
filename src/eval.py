@@ -64,12 +64,12 @@ class PremEvaluator:
         self.standings = standings
         self.prediction_folder = "predictions/prem"
 
-    def ev(self, names):
+    def evaluate(self, names):
 
         res_list = []
         for name in names:
 
-            prediction_path = os.path.join(self.prediction_folder, f"{name.lower().txt}")
+            prediction_path = os.path.join(self.prediction_folder, f"{name.lower()}.txt")
             with open(prediction_path, "r") as f:
                 preds = f.read().splitlines()
 
@@ -97,16 +97,34 @@ class NBAEvaluator:
         self.standings = standings
         self.prediction_folder = "predictions/nba"
 
-    def ev(self, names):
+
+    def compute_overall_metrics(self, metrics: pd.DataFrame) -> pd.DataFrame:
+        
+        worsts = metrics[metrics["worst_by"] == metrics["worst_by"].max()].copy()
+        return pd.DataFrame(
+            {
+                "spearmanr": [metrics["spearmanr"].mean()],
+                "total_diff": [metrics["total_diff"].sum()],
+                "total_perf": [metrics["total_perf"].sum()],
+                "worst_tms": ["_".join(worsts["worst_tms"])],
+                "worst_by": [metrics["worst_by"].max()],
+                "worst_bys": ["_".join(worsts["worst_bys"])],
+                "perfect_tms": ["_".join(metrics["perfect_tms"]).strip("_")],
+                "perfect_pos": ["_".join(metrics["perfect_pos"]).strip("_")],
+            }
+        )
+
+    def evaluate(self, names: list[str]) -> pd.DataFrame:
         
         metrics_list = []
+        names = ["Martin", "Lucas"]
         for conf in ["East", "West"]:
 
             conf_standings = self.standings.copy()
             conf_standings = conf_standings[
                 conf_standings["Conference"] == conf
             ]
-        
+
             res_list = []
             for name in names:
 
@@ -123,25 +141,20 @@ class NBAEvaluator:
             conf_metrics["conference"] = conf
             metrics_list.append(conf_metrics)
 
-            # metrics = metrics.sort_values(
-            #     ["spearmanr", "total_perf", "total_diff", "worst_by", "name"],
-            #     ascending=[True, True, False, True, True],
-            # ).reset_index(drop=True)
-
-        tmp = pd.concat(metrics_list)
-        worsts = tmp[tmp["worst_by"] == tmp["worst_by"].max()]
-
-        metrics = pd.DataFrame(
-            {
-                "spearmanr": [tmp["spearmanr"].mean()],
-                "total_diff": [tmp["total_diff"].sum()],
-                "total_perf": [tmp["total_perf"].sum()],
-                "worst_tms": ["_".join(worsts["worst_tms"])],
-                "worst_by": [tmp["worst_by"].max()],
-                "worst_bys": ["_".join(worsts["worst_bys"])],
-                "perfect_tms": ["_".join(tmp["perfect_tms"]).strip("_")],
-                "perfect_pos": ["_".join(tmp["perfect_pos"]).strip("_")],
-            }
-        )
+            all_metrics = pd.concat(metrics_list)
+            metrics = all_metrics.groupby("name").apply(self.compute_overall_metrics, include_groups=False).droplevel(1).reset_index()
+            metrics["conference"] = "Overall"
+            metrics = pd.concat([all_metrics, metrics], ignore_index=True)
 
         return metrics
+    
+
+def get_evaluator(league: str, standings: pd.DataFrame):
+
+    league = league.lower()
+    if league == "prem":
+        return PremEvaluator(standings)
+    elif league == "nba":
+        return NBAEvaluator(standings)
+    else:
+        raise ValueError(f"Unsupported league: {league}")
