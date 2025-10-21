@@ -164,3 +164,9 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-10-18,Alexis,72,3,Bournemouth,10,-10,Arsenal_Liverpool_Brentford,1_2_16,1
 2025-10-18,Martin,72,1,Bournemouth,11,-11,Liverpool,2,2
 2025-10-18,Thomas,82,1,Sunderland,10,-10,Brentford,16,3
+2025-10-19,Martin,66,2,Sunderland,12,-12,Tottenham_Brighton,5_9,1
+2025-10-19,Alexis,68,4,Bournemouth_Sunderland,10,-10_-10,Arsenal_Tottenham_Brighton_Brentford,1_5_9_16,2
+2025-10-19,Thomas,76,2,Sunderland,12,-12,Crystal Palace_Brentford,8_16,3
+2025-10-20,Alexis,66,2,Bournemouth,11,-11,Arsenal_Brentford,1_16,1
+2025-10-20,Martin,66,0,Bournemouth_Sunderland,12,-12_-12,,,2
+2025-10-20,Thomas,68,4,Sunderland,12,-12,Liverpool_Crystal Palace_Brighton_Brentford,4_8_10_16,3
