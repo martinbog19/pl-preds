@@ -81,8 +81,8 @@ class PremEvaluator:
         metrics.insert(0, "name", names)
 
         metrics = metrics.sort_values(
-            ["spearmanr", "total_perf", "total_diff", "worst_by", "name"],
-            ascending=[True, True, False, True, True],
+            ["total_diff", "total_perf", "worst_by"],
+            ascending=[True, False, True],
         ).reset_index(drop=True)
         metrics["rank"] = metrics.index + 1
 
