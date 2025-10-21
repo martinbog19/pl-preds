@@ -2,7 +2,7 @@ name: Scrape Standings
 
 on:
     schedule:
-        - cron: "0 7 * * *"
+      - cron: "0 7 * * *"
     workflow_dispatch:
 
 permissions:
@@ -29,6 +29,8 @@ jobs:
                 pip install -r requirements.txt
 
             - name: Run scrape_standings.py
+              env:
+                LEAGUE: "prem"
               run: python scrape_standings.py
 
             - name: Push all changes
