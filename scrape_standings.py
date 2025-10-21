@@ -19,7 +19,7 @@ standings = scraper.scrape_standings()
 standings.to_csv(f"data/{league}/standings.csv", index=False, header=False, mode="a")
 
 
-evaluator = get_evaluator(league)
+evaluator = get_evaluator(league, standings)
 
 metrics = evaluator.evaluate(names)
 metrics.insert(0, "date", today)
