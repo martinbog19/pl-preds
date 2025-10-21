@@ -8,9 +8,11 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from helpers.comms import format_rankings_msg, format_whatsapp_msg
-from helpers.ref import EMAILS
+from src.comms import format_rankings_msg, format_whatsapp_msg
+from src.ref import EMAILS
 
+
+league = "prem"
 
 
 SMTP_SERVER = 'smtp.gmail.com'
@@ -22,7 +24,7 @@ PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
 today = datetime.now().date()
 last_week = today - timedelta(days=7)
 
-metrics = pd.read_csv('data/metrics.csv')
+metrics = pd.read_csv(f'data/{league}/metrics.csv')
 
 metrics_last_week = metrics[metrics['date'].astype(str) == datetime.strftime(last_week, '%Y-%m-%d')][['name', 'rank']]
 metrics = metrics[metrics['date'].astype(str) == datetime.strftime(today, '%Y-%m-%d')]
@@ -36,7 +38,7 @@ metrics = metrics.merge(
 metrics['trend'] = np.sign(metrics['rank_past'] - metrics['rank'])
 
 rankings_msg = format_rankings_msg(metrics)
-subject = f'PL Predictions Weekly Update  -  {today.strftime("%d %b %Y")}'
+subject = f'{league.upper()} Predictions Weekly Update  -  {today.strftime("%d %b %Y")}'
 
 for _, row in metrics.sort_values('name').iterrows():
 

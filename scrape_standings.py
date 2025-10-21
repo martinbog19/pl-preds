@@ -1,38 +1,30 @@
 from datetime import datetime
 import pandas as pd
-import json
+import os
 
-from helpers.ref import NAMES
-from helpers.scrape import scrape_standings
-from helpers.eval import eval_preds
+from src.ref import PLAYERS
+from src.scrape import get_scraper
+from src.eval import get_evaluator
 
 
+league = os.getenv("LEAGUE")
 
-with open('helpers/abbr.json') as f:
-    abbr_map = json.load(f)
 
 today = datetime.now().date()
 
-standings = scrape_standings(abbr_map)
-standings.to_csv('data/standings.csv', index=False, header=False, mode='a')
+names = PLAYERS[league]
+
+scraper = get_scraper(league)
+standings = scraper.scrape_standings()
+standings.to_csv(f"data/{league}/standings.csv", index=False, header=False, mode="a")
 
 
-res_list = []
-for name in NAMES:
+evaluator = get_evaluator(league)
 
-    with open(f'predictions/{name.lower()}.txt', 'r') as f:
-        preds = f.read().splitlines()
+metrics = evaluator.evaluate(names)
+metrics.insert(0, "date", today)
 
-    res_list.append(eval_preds(standings, preds))
+if league == "prem":
+    metrics.drop(columns="spearmanr", inplace=True)
 
-metrics = pd.concat(res_list)
-metrics.insert(0, 'name', NAMES)
-metrics = metrics.sort_values(
-    ["total_diff", "total_perf", "worst_by", "name"],
-    ascending=[True, False, True, True],
-).reset_index(drop=True)
-metrics['rank'] = metrics.index + 1
-
-metrics.insert(0, 'date', today)
-
-metrics.to_csv('data/metrics.csv', index=False, header=False, mode='a')
+metrics.to_csv(f"data/{league}/metrics.csv", index=False, header=False, mode="a")

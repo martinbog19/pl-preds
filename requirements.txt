@@ -2,3 +2,5 @@ pandas
 numpy
 bs4
 requests
+scipy
+jinja2
