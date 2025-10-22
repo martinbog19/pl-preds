@@ -2,7 +2,7 @@ from datetime import datetime
 import pandas as pd
 import os
 
-from src.ref import PLAYERS
+from src.ref import VARS
 from src.scrape import get_scraper
 from src.eval import get_evaluator
 
@@ -12,7 +12,7 @@ league = os.getenv("LEAGUE")
 
 today = datetime.now().date()
 
-names = PLAYERS[league]
+names = VARS[league]["players"]
 
 scraper = get_scraper(league)
 standings = scraper.scrape_standings()

@@ -1,19 +1,30 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 import time
 import os
+import sys
 import json
 from jinja2 import Template
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from src.ref import EMAILS
+from src.ref import EMAILS, VARS
 from src.utils import int_to_rank
 
 
 league = "nba"
+
+REF_DATE = VARS[league]["ref_date"]
+EMAIL_FREQUENCY = VARS[league]["email_frequency"]
+
+today = datetime.now().date()
+yesterday = today - timedelta(days=1)
+
+if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
+    print("No email to send today.")
+    sys.exit()
 
 
 SMTP_SERVER = 'smtp.gmail.com'
@@ -21,9 +32,6 @@ SMTP_PORT = 587
 USERNAME = os.getenv('GMAIL_USERNAME')
 PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
 
-
-today = datetime.now().date()
-yesterday = today - timedelta(days=1)
 
 metrics = pd.read_csv(f'data/{league}/metrics.csv')
 metrics = metrics[metrics["conference"] == "Overall"].copy()
