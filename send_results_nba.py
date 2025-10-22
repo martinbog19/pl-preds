@@ -22,9 +22,9 @@ EMAIL_FREQUENCY = VARS[league]["email_frequency"]
 today = datetime.now().date()
 yesterday = today - timedelta(days=1)
 
-if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
-    print("No email to send today.")
-    sys.exit()
+# if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
+#     print("No email to send today.")
+#     sys.exit()
 
 
 SMTP_SERVER = 'smtp.gmail.com'
@@ -79,7 +79,8 @@ for _, row in metrics.sort_values('name').iterrows():
 
     score = (row['spearmanr'] + 1) / 2
 
-    to_email = EMAILS.get(name)
+    # to_email = EMAILS.get(name)
+    to_email = "martinbog19@gmail.com"
 
     perf_msg = ", ".join(
         [
@@ -100,7 +101,6 @@ for _, row in metrics.sort_values('name').iterrows():
             )
         ]
     )
-
 
     report_html = template.render(
         medal=medal,
