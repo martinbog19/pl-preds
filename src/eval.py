@@ -117,7 +117,6 @@ class NBAEvaluator:
     def evaluate(self, names: list[str]) -> pd.DataFrame:
         
         metrics_list = []
-        names = ["Martin", "Lucas"]
         for conf in ["East", "West"]:
 
             conf_standings = self.standings.copy()

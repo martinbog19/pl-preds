@@ -1,8 +1,8 @@
-name: Scrape Standings
+name: Scrape & Evaluate NBA Standings
 
 on:
     schedule:
-      - cron: "0 7 * * *"
+      - cron: "0 11 * * *"
     workflow_dispatch:
 
 permissions:
@@ -30,7 +30,7 @@ jobs:
 
             - name: Run scrape_standings.py
               env:
-                LEAGUE: "prem"
+                LEAGUE: "nba"
               run: python scrape_standings.py
 
             - name: Push all changes

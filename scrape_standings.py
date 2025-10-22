@@ -1,5 +1,4 @@
 from datetime import datetime
-import pandas as pd
 import os
 
 from src.ref import VARS
@@ -8,6 +7,7 @@ from src.eval import get_evaluator
 
 
 league = os.getenv("LEAGUE")
+assert league, f"Please specify league to scrape!"
 
 
 today = datetime.now().date()
