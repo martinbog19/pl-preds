@@ -19,7 +19,7 @@ league = "nba"
 REF_DATE = VARS[league]["ref_date"]
 EMAIL_FREQUENCY = VARS[league]["email_frequency"]
 
-today = datetime.now().date()
+today = datetime.now().date() - timedelta(days=1)
 yesterday = today - timedelta(days=1)
 
 # if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
@@ -45,21 +45,21 @@ metrics = metrics.merge(
     how='left',
     suffixes=('', '_past')
 )
-metrics['trend'] = np.sign(metrics['rank_past'] - metrics['rank']).fillna(0)
+metrics['trend'] = (metrics['rank_past'] - metrics['rank']).fillna(0)
 
-rankings_html = metrics[["trend", "rank", "name", "total_diff", "total_perf"]].rename(
+metrics["Rank"] = metrics.apply(lambda row: f"{int_to_rank(row['rank'])}", axis=1)
+metrics["Score"] = metrics['spearmanr'].apply(lambda x: f"{100 * (x + 1) / 2:.1f}%")
+
+
+rankings_html = metrics[["rank", "Rank", "name", "Score", "total_perf"]].rename(
     columns={
-        "trend": "",
         "name": "Name",
-        "total_diff": "Score",
+        "Rank": "",
         "total_perf": "Perfect",
     }
-).sort_values("rank").to_html(index=False, classes="dataframe", border=0)
+).sort_values("rank").drop(columns="rank").to_html(index=False, classes="dataframe", border=0)
 
 subject = f'{league.upper()} Predictions Update  -  {today.strftime("%d %b %Y")}'
-
-
-subject = f'{league.upper()} Predictions Weekly Update  -  {today.strftime("%d %b %Y")}'
 
 with open("template.html") as f:
     template = Template(f.read())
@@ -75,9 +75,6 @@ for _, row in metrics.sort_values('name').iterrows():
     rank = row['rank']
     medal = {1: '🥇', 2: '🥈', 3: '🥉'}.get(rank, '')
     position = int_to_rank(rank)
-
-
-    score = (row['spearmanr'] + 1) / 2
 
     # to_email = EMAILS.get(name)
     to_email = "martinbog19@gmail.com"
@@ -107,7 +104,7 @@ for _, row in metrics.sort_values('name').iterrows():
         name=name,
         report_date=today.strftime("%d %B %Y"),
         rankings_table=rankings_html,
-        score=f"{score:.1%}",
+        score=row["Score"],
         abs_diff=row['total_diff'],
         perf_msg=perf_msg,
         worst_msg=worst_msg,
