@@ -4,4 +4,4 @@ bs4
 requests
 scipy
 jinja2
-nba_api
+lxml
