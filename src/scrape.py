@@ -2,9 +2,9 @@ import requests
 import pandas as pd
 from datetime import date
 import json
+from bs4 import BeautifulSoup
+from io import StringIO
 
-
-from nba_api.stats.endpoints.leaguestandings import LeagueStandings
 
 
 class PremScraper:
@@ -36,9 +36,9 @@ class PremScraper:
 
 class NBAScraper:
 
-    def __init__(self, season="2025-26"):
+    def __init__(self):
 
-        self.ls_api = LeagueStandings(season=season)
+        self.url = "https://sports.yahoo.com/nba/standings/?selectedTab=CONFERENCE"
 
         with open("utils/abbr_nba.json", "r") as f:
             abbr_dict = json.load(f)
@@ -46,23 +46,26 @@ class NBAScraper:
 
     def scrape_standings(self) -> pd.DataFrame:
 
-        data = self.ls_api.get_dict()
+        page = requests.get(self.url)
+        soup = BeautifulSoup(page.content, "html.parser")
+        tables = soup.find_all("table")
 
-        columns = data["resultSets"][0]["headers"]
-        rows = data["resultSets"][0]["rowSet"]
+        conf_standings = []
+        for table in tables[-2:]:
 
-        standings = pd.DataFrame(rows, columns=columns)
-        standings["Team"] = standings.apply(
-            lambda row: " ".join([row["TeamCity"], row["TeamName"]]),
-            axis=1
-        ).map(self.abbr_map)
+            df = pd.read_html(StringIO(str(table)))[0]
+            conf = df.columns[0]
 
-        standings = (
-            standings.rename(columns={"PlayoffRank": "Rk"})
-            [["Conference", "Rk", "Team"]]
-        )
+            cf_st = df[[conf]].rename(columns={conf: "Team"})
+            cf_st["Team"] = cf_st["Team"].map(self.abbr_map)
+            cf_st["Conference"] = conf.removesuffix("ern")
+            cf_st["Rk"] = range(1, 16)
+            cf_st["Date"] = date.today()
+            conf_standings.append(
+                cf_st[["Conference", "Rk", "Team", "Date"]]
+            )
 
-        standings['Date'] = date.today()
+        standings = pd.concat(conf_standings, ignore_index=True)
 
         return standings.sort_values(["Conference", "Rk"]).reset_index(drop=True)
     
