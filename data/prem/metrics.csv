@@ -179,3 +179,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-10-23,Martin,66,0,BOU_SUN,12,-12_-12,,,1
 2025-10-23,Alexis,70,1,BOU,11,-11,ARS,1,2
 2025-10-23,Thomas,72,3,SUN,12,-12,LIV_CRY_BHA,4_8_10,3
+2025-10-24,Martin,66,0,BOU_SUN,12,-12_-12,,,1
+2025-10-24,Alexis,70,1,BOU,11,-11,ARS,1,2
+2025-10-24,Thomas,72,3,SUN,12,-12,LIV_CRY_BHA,4_8_10,3
