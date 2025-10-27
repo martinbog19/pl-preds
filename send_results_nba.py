@@ -22,15 +22,15 @@ EMAIL_FREQUENCY = VARS[league]["email_frequency"]
 today = datetime.now().date() - timedelta(days=1)
 yesterday = today - timedelta(days=1)
 
-# if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
-#     print("No email to send today.")
-#     sys.exit()
+if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
+    print("No email to send today.")
+    sys.exit()
 
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-USERNAME = os.getenv('GMAIL_USERNAME')
-PASSWORD = os.getenv('GMAIL_APP_PASSWORD')
+USERNAME = os.getenv('NBA_GMAIL_USERNAME')
+PASSWORD = os.getenv('NBA_GMAIL_APP_PASSWORD')
 
 
 metrics = pd.read_csv(f'data/{league}/metrics.csv')
@@ -76,8 +76,7 @@ for _, row in metrics.sort_values('name').iterrows():
     medal = {1: '🥇', 2: '🥈', 3: '🥉'}.get(rank, '')
     position = int_to_rank(rank)
 
-    # to_email = EMAILS.get(name)
-    to_email = "martinbog19@gmail.com"
+    to_email = EMAILS.get(name)
 
     perf_msg = ", ".join(
         [
