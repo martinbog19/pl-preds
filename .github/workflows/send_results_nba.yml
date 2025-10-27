@@ -1,8 +1,8 @@
 name: Send NBA Results by Email
 
 on:
-    # schedule:
-    #   - cron: '0 16 * * 1'
+    schedule:
+      - cron: "0 15 * * *"
     workflow_dispatch:
 
 jobs:
@@ -24,6 +24,6 @@ jobs:
 
             - name: Run send_results_nba.py
               env:
-                GMAIL_USERNAME: ${{ secrets.GMAIL_USERNAME }}
-                GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+                NBA_GMAIL_USERNAME: ${{ secrets.NBA_GMAIL_USERNAME }}
+                NBA_GMAIL_APP_PASSWORD: ${{ secrets.NBA_GMAIL_APP_PASSWORD }}
               run: python send_results_nba.py

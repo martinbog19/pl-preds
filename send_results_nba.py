@@ -29,11 +29,9 @@ if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-# USERNAME = os.getenv('NBA_GMAIL_USERNAME')
-# PASSWORD = os.getenv('NBA_GMAIL_APP_PASSWORD')
+USERNAME = os.getenv('NBA_GMAIL_USERNAME')
+PASSWORD = os.getenv('NBA_GMAIL_APP_PASSWORD')
 
-USERNAME = "nba.predictions.reports@gmail.com"
-PASSWORD = "olmc ignq zrbp hebi"
 
 
 metrics = pd.read_csv(f'data/{league}/metrics.csv')
