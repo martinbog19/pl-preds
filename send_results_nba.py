@@ -19,7 +19,7 @@ league = "nba"
 REF_DATE = VARS[league]["ref_date"]
 EMAIL_FREQUENCY = VARS[league]["email_frequency"]
 
-today = datetime.now().date() - timedelta(days=1)
+today = datetime.now().date()
 yesterday = today - timedelta(days=1)
 
 if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
@@ -29,8 +29,11 @@ if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
 
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-USERNAME = os.getenv('NBA_GMAIL_USERNAME')
-PASSWORD = os.getenv('NBA_GMAIL_APP_PASSWORD')
+# USERNAME = os.getenv('NBA_GMAIL_USERNAME')
+# PASSWORD = os.getenv('NBA_GMAIL_APP_PASSWORD')
+
+USERNAME = "nba.predictions.reports@gmail.com"
+PASSWORD = "olmc ignq zrbp hebi"
 
 
 metrics = pd.read_csv(f'data/{league}/metrics.csv')
@@ -86,7 +89,7 @@ for _, row in metrics.sort_values('name').iterrows():
                 row['perfect_pos'].split("_"),
             )
         ]
-    )
+    ) if row['perfect_tms'] != "" else "None..."
 
     worst_msg = ", ".join(
         [
