@@ -6,7 +6,7 @@ EMAILS = {
     "Alexis": "alexis.bogaert2309@gmail.com",
     "Martin": "martinbog19@gmail.com",
     "Thomas": "tbogaert19@gmail.com",
-    "Lucas": "lucas.leforestier@icloud.com",
+    "Lucas": "leforestier.lucas@icloud.com",
     "Krish": "krishanudatta@gmail.com",
     "Nandha": "nandha.ravi@hotmail.com",
     "Ayush": "ajthacker529@gmail.com",
