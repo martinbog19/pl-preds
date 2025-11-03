@@ -209,3 +209,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-11-02,Alexis,72,2,BOU,12,-12,ARS_MAN,1_7,1
 2025-11-02,Martin,74,0,BOU_SUN,13,-13_-13,,,2
 2025-11-02,Thomas,80,1,SUN,13,-13,BHA,10,3
+2025-11-03,Martin,64,2,SUN,12,-12,TOT_MAN,5_8,1
+2025-11-03,Alexis,66,2,BOU_SUN,10,-10_-10,ARS_TOT,1_5,2
+2025-11-03,Thomas,72,1,SUN,12,-12,BHA,10,3
