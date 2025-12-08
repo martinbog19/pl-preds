@@ -314,3 +314,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-12-07,Martin,64,2,SUN,12,-12,CHE_BRE,4_14,1
 2025-12-07,Thomas,66,3,SUN,12,-12,TOT_BHA_BOU,9_10_13,2
 2025-12-07,Alexis,72,2,SUN,10,-10,ARS_CHE,1_4,3
+2025-12-08,Martin,68,1,SUN,11,-11,BRE,14,1
+2025-12-08,Thomas,72,1,SUN,11,-11,BOU,13,2
+2025-12-08,Alexis,76,1,SUN,9,-9,ARS,1,3
