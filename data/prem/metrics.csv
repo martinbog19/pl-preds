@@ -383,3 +383,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2025-12-30,Alexis,64,2,SUN,10,-10,ARS_FUL,1_10,1
 2025-12-30,Thomas,64,2,SUN,12,-12,LIV_MAN,4_6,2
 2025-12-30,Martin,64,1,SUN,12,-12,BOU,15,3
+2025-12-31,Martin,62,1,SUN,12,-12,BOU,15,1
+2025-12-31,Thomas,66,3,SUN,12,-12,LIV_MAN_FUL,4_6_12,2
+2025-12-31,Alexis,66,1,SUN,10,-10,ARS,1,3
