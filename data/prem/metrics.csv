@@ -398,3 +398,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-01-04,Martin,62,1,SUN,12,-12,BOU,15,1
 2026-01-04,Alexis,64,2,SUN,10,-10,ARS_MNC,1_3,2
 2026-01-04,Thomas,68,3,SUN,12,-12,LIV_MAN_FUL,4_6_12,3
+2026-01-05,Alexis,58,1,BRE_SUN,9,-9_-9,ARS,1,1
+2026-01-05,Martin,60,1,SUN,11,-11,BOU,15,2
+2026-01-05,Thomas,62,3,SUN,11,-11,LIV_MAN_BHA,4_6_10,3
