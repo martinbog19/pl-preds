@@ -401,3 +401,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-01-05,Alexis,58,1,BRE_SUN,9,-9_-9,ARS,1,1
 2026-01-05,Martin,60,1,SUN,11,-11,BOU,15,2
 2026-01-05,Thomas,62,3,SUN,11,-11,LIV_MAN_BHA,4_6_10,3
+2026-01-06,Alexis,58,1,BRE_SUN,9,-9_-9,ARS,1,1
+2026-01-06,Martin,60,1,SUN,11,-11,BOU,15,2
+2026-01-06,Thomas,62,3,SUN,11,-11,LIV_MAN_BHA,4_6_10,3
