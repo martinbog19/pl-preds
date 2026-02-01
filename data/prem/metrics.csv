@@ -479,3 +479,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-01-31,Alexis,66,1,TOT,9,9,ARS,1,1
 2026-01-31,Thomas,70,1,BRE_SUN,8,-8_-8,BOU,13,2
 2026-01-31,Martin,70,0,TOT,9,9,,,3
+2026-02-01,Alexis,66,2,TOT,9,9,ARS_CHE,1_4,1
+2026-02-01,Thomas,70,1,SUN,8,-8,MAN,6,2
+2026-02-01,Martin,70,1,TOT,9,9,CHE,4,3
