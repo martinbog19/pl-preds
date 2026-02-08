@@ -500,3 +500,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-02-07,Alexis,72,1,BRE_SUN_TOT,9,-9_-9_9,ARS,1,1
 2026-02-07,Martin,76,0,SUN,11,-11,,,2
 2026-02-07,Thomas,76,0,SUN,11,-11,,,3
+2026-02-08,Alexis,74,2,BRE_TOT,9,-9_9,ARS_FUL,1_10,1
+2026-02-08,Martin,78,0,SUN,10,-10,,,2
+2026-02-08,Thomas,78,0,SUN,10,-10,,,3
