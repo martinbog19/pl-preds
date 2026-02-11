@@ -509,3 +509,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-02-10,Alexis,74,2,TOT,10,10,ARS_FUL,1_10,1
 2026-02-10,Martin,78,0,SUN_TOT,10,-10_10,,,2
 2026-02-10,Thomas,78,0,SUN,10,-10,,,3
+2026-02-11,Thomas,76,1,BRE,9,-9,FUL,12,1
+2026-02-11,Alexis,76,1,TOT,11,11,ARS,1,2
+2026-02-11,Martin,76,0,TOT,11,11,,,3
