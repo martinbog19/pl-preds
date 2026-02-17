@@ -527,3 +527,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-02-16,Thomas,76,1,BRE,9,-9,FUL,12,1
 2026-02-16,Alexis,76,1,TOT,11,11,ARS,1,2
 2026-02-16,Martin,76,0,TOT,11,11,,,3
+2026-02-17,Thomas,76,1,BRE,9,-9,FUL,12,1
+2026-02-17,Alexis,76,1,TOT,11,11,ARS,1,2
+2026-02-17,Martin,76,0,TOT,11,11,,,3
