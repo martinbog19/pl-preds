@@ -548,3 +548,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-02-23,Alexis,72,3,TOT,11,11,ARS_CHE_FUL,1_4_10,1
 2026-02-23,Martin,76,1,TOT,11,11,CHE,4,2
 2026-02-23,Thomas,76,0,BRE,9,-9,,,3
+2026-02-24,Alexis,74,2,TOT,11,11,ARS_FUL,1_10,1
+2026-02-24,Thomas,78,0,BRE,9,-9,,,2
+2026-02-24,Martin,78,0,TOT,11,11,,,3
