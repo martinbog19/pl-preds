@@ -66,7 +66,7 @@ with open("template.html") as f:
     template = Template(f.read())
 
 
-with open("utils/abbr_nba.json", "r") as f:
+with open("utils/nba_names.json", "r") as f:
     abbr_nba = json.load(f)
 
 
@@ -77,7 +77,8 @@ for _, row in metrics.sort_values('name').iterrows():
     medal = {1: '🥇', 2: '🥈', 3: '🥉'}.get(rank, '')
     position = int_to_rank(rank)
 
-    to_email = EMAILS.get(name)
+    # to_email = EMAILS.get(name)
+    to_email = "martinbog19@gmail.com"
 
     perf_msg = ", ".join(
         [

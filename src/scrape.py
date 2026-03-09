@@ -2,9 +2,8 @@ import requests
 import pandas as pd
 from datetime import date
 import json
-from bs4 import BeautifulSoup
-from io import StringIO
 import os
+import time
 
 
 
@@ -87,6 +86,7 @@ class NBAScraper:
                     "Date": date.today(),
                 }
             )
+            time.sleep(0.5)
 
         standings = pd.DataFrame(data)
 
