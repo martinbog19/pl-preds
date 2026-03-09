@@ -6,7 +6,7 @@ from src.scrape import get_scraper
 from src.eval import get_evaluator
 
 
-league = os.getenv("LEAGUE")
+league = os.getenv("LEAGUE", "nba")
 assert league, f"Please specify league to scrape!"
 
 

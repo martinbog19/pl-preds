@@ -4,6 +4,7 @@ from datetime import date
 import json
 from bs4 import BeautifulSoup
 from io import StringIO
+import os
 
 
 
@@ -38,34 +39,56 @@ class NBAScraper:
 
     def __init__(self):
 
-        self.url = "https://sports.yahoo.com/nba/standings/?selectedTab=CONFERENCE"
+        self.base_url = "http://site.api.espn.com/apis/site/v2/"
 
         with open("utils/abbr_nba.json", "r") as f:
             abbr_dict = json.load(f)
         self.abbr_map = {v: k for k, v in abbr_dict.items()}
 
+    def _get_conference(self, standing_summary: str) -> str:
+        if (
+            "southwest" in standing_summary.lower()
+            or "northwest" in standing_summary.lower()
+            or "pacific" in standing_summary.lower()
+        ):
+            return "West"
+        else:
+            return "East"
+
     def scrape_standings(self) -> pd.DataFrame:
 
-        page = requests.get(self.url)
-        soup = BeautifulSoup(page.content, "html.parser")
-        tables = soup.find_all("table")
+        query_url = os.path.join(self.base_url, "sports/basketball/nba/teams")
+        response = requests.get(query_url)
+        response.raise_for_status()
 
-        conf_standings = []
-        for table in tables[-2:]:
+        teams = response.json()["sports"][0]["leagues"][0]["teams"]
+        data = []
+        for team in teams:
 
-            df = pd.read_html(StringIO(str(table)))[0]
-            conf = df.columns[0]
+            team_id = team["team"]["id"]
+            team_abbr = team["team"]["abbreviation"]
+            team_name = team["team"]["displayName"]
 
-            cf_st = df[[conf]].rename(columns={conf: "Team"})
-            cf_st["Team"] = cf_st["Team"].map(self.abbr_map)
-            cf_st["Conference"] = conf.removesuffix("ern")
-            cf_st["Rk"] = range(1, 16)
-            cf_st["Date"] = date.today()
-            conf_standings.append(
-                cf_st[["Conference", "Rk", "Team", "Date"]]
+            query_url = os.path.join(self.base_url, f"sports/basketball/nba/teams/{team_id}")
+            tm_response = requests.get(query_url)
+
+            overall_record_stats = tm_response.json()["team"]["record"]["items"][0]["stats"]
+            playoff_seed = [x["value"] for x in overall_record_stats if x["name"] == "playoffSeed"][0]
+
+            standingSummary = tm_response.json()["team"]["standingSummary"]
+            conference = self._get_conference(standingSummary)
+
+            data.append(
+                {
+                    "Conference": conference,
+                    "Rk": int(playoff_seed),
+                    "Team": self.abbr_map[team_abbr],
+                    "TeamName": team_name,
+                    "Date": date.today(),
+                }
             )
 
-        standings = pd.concat(conf_standings, ignore_index=True)
+        standings = pd.DataFrame(data)
 
         return standings.sort_values(["Conference", "Rk"]).reset_index(drop=True)
     
