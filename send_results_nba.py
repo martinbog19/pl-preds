@@ -24,7 +24,7 @@ yesterday = today - timedelta(days=1)
 
 if (today - REF_DATE).days % EMAIL_FREQUENCY != 0:
     print("No email to send today.")
-    sys.exit()
+    # sys.exit()
 
 
 SMTP_SERVER = 'smtp.gmail.com'
