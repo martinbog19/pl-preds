@@ -49,7 +49,7 @@ metrics = metrics.merge(
 metrics['trend'] = (metrics['rank_past'] - metrics['rank']).fillna(0)
 
 metrics["Rank"] = metrics.apply(lambda row: f"{int_to_rank(row['rank'])}", axis=1)
-metrics["Score"] = metrics['spearmanr'].apply(lambda x: f"{100 * (x + 1) / 2:.1f}%")
+metrics["Score"] = metrics['spearmanr'].apply(lambda x: f"{100 * x:.1f}%")
 
 
 rankings_html = metrics[["rank", "Rank", "name", "Score", "total_perf"]].rename(
