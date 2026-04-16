@@ -701,3 +701,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-04-15,Alexis,74,2,TOT,13,13,ARS_BHA,1_9,1
 2026-04-15,Martin,74,1,TOT,13,13,BHA,9,2
 2026-04-15,Thomas,76,1,BRE_SUN_NEW_TOT,9,-9_-9_9_9,FUL,12,3
+2026-04-16,Alexis,74,2,TOT,13,13,ARS_BHA,1_9,1
+2026-04-16,Martin,74,1,TOT,13,13,BHA,9,2
+2026-04-16,Thomas,76,1,BRE_SUN_NEW_TOT,9,-9_-9_9_9,FUL,12,3
