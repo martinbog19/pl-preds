@@ -722,3 +722,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-04-22,Alexis,76,1,TOT,13,13,ARS,1,1
 2026-04-22,Martin,76,0,TOT,13,13,,,2
 2026-04-22,Thomas,78,1,NEW_TOT,9,9_9,FUL,12,3
+2026-04-23,Martin,76,1,TOT,13,13,MNC,1,1
+2026-04-23,Thomas,78,2,NEW_TOT,9,9_9,MNC_FUL,1_12,2
+2026-04-23,Alexis,80,0,TOT,13,13,,,3
