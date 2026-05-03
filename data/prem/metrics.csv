@@ -752,3 +752,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-05-02,Alexis,74,2,TOT,13,13,ARS_FUL,1_10,1
 2026-05-02,Martin,78,1,TOT,13,13,EVE,11,2
 2026-05-02,Thomas,80,1,NEW,10,10,LIV,4,3
+2026-05-03,Alexis,74,2,TOT,13,13,ARS_FUL,1_10,1
+2026-05-03,Martin,78,1,TOT,13,13,EVE,11,2
+2026-05-03,Thomas,80,1,BRE,10,-10,LIV,4,3
