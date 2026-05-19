@@ -800,3 +800,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-05-18,Alexis,82,1,TOT,12,12,ARS,1,1
 2026-05-18,Martin,82,1,TOT,12,12,FUL,13,2
 2026-05-18,Thomas,84,0,SUN,10,-10,,,3
+2026-05-19,Alexis,82,1,TOT,12,12,ARS,1,1
+2026-05-19,Martin,82,1,TOT,12,12,FUL,13,2
+2026-05-19,Thomas,84,0,SUN,10,-10,,,3
