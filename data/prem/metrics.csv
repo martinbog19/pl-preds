@@ -842,3 +842,6 @@ date,name,total_diff,total_perf,worst_tms,worst_by,worst_bys,perfect_tms,perfect
 2026-06-02,Alexis,80,2,TOT,12,12,ARS_EVE,1_13,1
 2026-06-02,Thomas,84,0,SUN,12,-12,,,2
 2026-06-02,Martin,86,0,SUN_TOT,12,-12_12,,,3
+2026-06-03,Alexis,80,2,TOT,12,12,ARS_EVE,1_13,1
+2026-06-03,Thomas,84,0,SUN,12,-12,,,2
+2026-06-03,Martin,86,0,SUN_TOT,12,-12_12,,,3
