@@ -1,0 +1,9 @@
+# Theme colors match the official Premier League brand palette:
+# purple (#38003c) and green (#00ff85).
+[theme]
+base = "dark"
+primaryColor = "#00ff85"
+backgroundColor = "#080b14"
+secondaryBackgroundColor = "#38003c"
+textColor = "#ffffff"
+font = "sans serif"

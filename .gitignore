@@ -209,3 +209,6 @@ __marimo__/
 secrets/
 
 *.ipynb
+
+# App-managed cache (local snapshot history for weekly movement badges)
+.cache/

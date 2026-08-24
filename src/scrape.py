@@ -31,7 +31,26 @@ class PremScraper:
         standings['Date'] = date.today()
 
         return standings
-    
+
+    def scrape_matchday(self) -> int:
+        """
+        Returns the number of games played by the team that has played
+        the most, used to display the current matchday in the app.
+        """
+        response = requests.get(self.url)
+        response.raise_for_status()
+        data = response.json()
+        stgs = data['children'][0]['standings']['entries']
+
+        games_played = [
+            int(stat['value'])
+            for entry in stgs
+            for stat in entry['stats']
+            if stat['name'] == 'gamesPlayed'
+        ]
+
+        return max(games_played) if games_played else 0
+
 
 
 class NBAScraper:
